@@ -1,0 +1,47 @@
+🎨 ProjectRabs
+
+A Corkboard for Your Characters
+
+ProjectRabs is a creative community platform where users can showcase their original characters (OCs), share artwork, customize their profiles, and interact with other creators.
+
+✨ Features
+
+- 🗂️ Create, edit, and showcase original characters.
+- 🧵 Browse and search the community feed.
+- 💬 Comment, reply, like, and react with emojis.
+- 🔔 Receive notifications.
+- 🎨 Customize profiles, themes, and fonts.
+- 🏷️ Add character tags and details.
+- ✨ Upload and use stickers.
+- 📱 Responsive layout for mobile and desktop.
+- 🏳️‍🌈 Customizable pronouns and gender options.
+
+🚀 Getting Started
+
+1. Download or clone this repository.
+2. Open the project folder.
+3. Open "index.html" in your browser.
+4. Create an account and start exploring!
+
+No Node.js or Vite setup is required for the current standalone HTML version.
+
+🛠️ Built With
+
+- HTML5
+- CSS3
+- JavaScript
+- Google Fonts
+- Browser storage
+
+📌 Project Information
+
+- Project: ProjectRabs
+- Version: 2.0.0
+- Edition: Beautiful Comments Edition
+- Status: In Development
+
+💖 Credits
+
+Created with love by ProjectRabs.
+
+Create. Share. Connect. Let Your Characters Shine.
