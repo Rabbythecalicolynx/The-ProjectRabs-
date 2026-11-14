@@ -1,0 +1,3770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>ProjectRabs — Beautiful Comments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&family=Merriweather:wght@400;700&family=Abril+Fatface&family=Great+Vibes&family=Raleway:wght@400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PROJECTRABS — BEAUTIFUL COMMENTS
+   ============================================================ */
+
+/* ====== ROOT VARIABLES ====== */
+:root {
+  --bg: #FBF3FF;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-nav: #FFFFFF;
+  --text-primary: #3D2C5F;
+  --text-secondary: #6b5b8f;
+  --text-muted: #9a8ab5;
+  --border-color: #eadffc;
+  --shadow: rgba(61,44,95,0.18);
+  --shadow-lg: rgba(61,44,95,0.25);
+  --accent1: #FF6FA5;
+  --accent2: #2EC4B6;
+  --accent3: #FFD23F;
+  --accent4: #6C5CE7;
+  --danger: #e14b6a;
+  --success: #0e7d5a;
+  --warning: #7a5c00;
+  --bg-warning: #fff8e1;
+  --input-bg: #fffdfe;
+  --modal-overlay: rgba(61,44,95,0.45);
+  --tag-bg: #f2e9ff;
+  --comment-bg: #fbf7ff;
+  
+  --font-family-body: 'Quicksand', sans-serif;
+  --font-family-heading: 'Fredoka', sans-serif;
+  --font-family-accent: 'Space Mono', monospace;
+  
+  --nav-height: 64px;
+  --nav-bottom-height: 70px;
+  --sidebar-width: 240px;
+  --card-radius: 16px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.3s ease;
+}
+
+/* ====== DARK THEMES ====== */
+[data-theme="dark-purple"] {
+  --bg: #1a142b;
+  --bg-secondary: #2d1f4a;
+  --bg-card: #2d1f4a;
+  --bg-nav: #2d1f4a;
+  --text-primary: #e8d9ff;
+  --text-secondary: #b8a5d6;
+  --text-muted: #8a7aaa;
+  --border-color: #4a3570;
+  --shadow: rgba(0,0,0,0.4);
+  --shadow-lg: rgba(0,0,0,0.6);
+  --accent1: #FF6FA5;
+  --accent2: #2EC4B6;
+  --accent3: #FFD23F;
+  --accent4: #8B7BF7;
+  --danger: #e14b6a;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --bg-warning: #4a3a1a;
+  --input-bg: #3d2a5c;
+  --modal-overlay: rgba(0,0,0,0.7);
+  --tag-bg: #3d2a5c;
+  --comment-bg: #3d2a5c;
+}
+
+/* ====== BG THEMES ====== */
+.bg-none { background: var(--bg-secondary); }
+.bg-starrynight {
+  background: radial-gradient(circle at 15% 20%, #fff 1px, transparent 1.5px) 0 0/40px 40px,
+              radial-gradient(circle at 60% 70%, #fff 1px, transparent 1.5px) 10px 15px/50px 50px,
+              radial-gradient(circle at 80% 30%, #fff 1px, transparent 1.5px) 0 0/60px 60px,
+              linear-gradient(160deg, #0b1237, #1c1750 60%, #3a2166);
+}
+.bg-sakura { background: linear-gradient(160deg, #ffe3ef, #ffc4dd 50%, #ffe9f4); }
+.bg-cyber {
+  background: repeating-linear-gradient(0deg, rgba(0,255,240,.15) 0 1px, transparent 1px 26px),
+              repeating-linear-gradient(90deg, rgba(0,255,240,.15) 0 1px, transparent 1px 26px),
+              linear-gradient(160deg, #0a0a1a, #170a2e);
+}
+.bg-meadow { background: linear-gradient(180deg, #bdeaff 0%, #bdeaff 55%, #c7f0a5 55%, #8fd67e 100%); }
+.bg-deepsea {
+  background: radial-gradient(circle at 30% 80%, rgba(255,255,255,.25) 0 4px, transparent 5px) 0 0/70px 70px,
+              linear-gradient(180deg, #053a52, #012338);
+}
+.bg-sunset { background: linear-gradient(180deg, #3a1c5e 0%, #a8397a 40%, #f2765f 70%, #ffd27a 100%); }
+.bg-cottoncandy { background: linear-gradient(120deg, #c9e7ff, #ffd6f0 45%, #e3d1ff); }
+.bg-pride { background: linear-gradient(180deg, #ff5f6d 0 16.6%, #ff9a56 16.6% 33.2%, #ffd83f 33.2% 49.8%, #5ad18a 49.8% 66.4%, #4aa9ff 66.4% 83%, #a06bff 83% 100%); }
+
+/* ====== RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background var(--transition-medium), color var(--transition-medium);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== SCROLLBAR ====== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent4); border-radius: 3px; }
+
+/* ====== APP CONTAINER ====== */
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ====== TOP BAR ====== */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--bg-nav);
+  border-bottom: 2px solid var(--border-color);
+  height: var(--nav-height);
+  flex-shrink: 0;
+  z-index: 10;
+  transition: background var(--transition-medium);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.brand-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--accent1), var(--accent3), var(--accent2), var(--accent4), var(--accent1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand h1 {
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.brand .tagline {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-nav);
+  border-right: 2px solid var(--border-color);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 5;
+  transition: background var(--transition-medium);
+}
+
+.sidebar.open { display: block; }
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-family-body);
+}
+
+.sidebar-nav button:hover {
+  background: var(--tag-bg);
+  color: var(--text-primary);
+}
+
+.sidebar-nav button.active {
+  background: var(--accent4);
+  color: white;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+}
+
+.sidebar-nav button .icon {
+  font-size: 20px;
+  width: 28px;
+  text-align: center;
+}
+
+.sidebar-nav button .label {
+  flex: 1;
+}
+
+.sidebar-user {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 2px solid var(--border-color);
+}
+
+.sidebar-user .user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.sidebar-user .user-card:hover {
+  background: var(--tag-bg);
+}
+
+.sidebar-user .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--tag-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--accent4);
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.sidebar-user .user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-user .user-info .name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user .user-info .pronouns {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ====== MAIN CONTENT ====== */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 20px 100px;
+  transition: padding var(--transition-medium);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ====== BOTTOM NAV ====== */
+.bottom-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-bottom-height);
+  background: var(--bg-nav);
+  border-top: 2px solid var(--border-color);
+  z-index: 10;
+  padding: 4px 8px 8px;
+  transition: background var(--transition-medium);
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bottom-nav button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+  font-family: var(--font-family-body);
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 60px;
+  position: relative;
+}
+
+.bottom-nav button .icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.bottom-nav button .label {
+  font-size: 9px;
+}
+
+.bottom-nav button.active {
+  color: var(--accent4);
+}
+
+.bottom-nav button.active .icon {
+  transform: scale(1.1);
+}
+
+.bottom-nav button .badge {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  background: var(--danger);
+  color: white;
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ====== FAB ====== */
+.fab {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent4);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.4);
+  font-size: 28px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+.fab:active {
+  transform: scale(0.92);
+}
+
+/* ====== CARDS ====== */
+.pinboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 4px 0;
+}
+
+.pin-card {
+  background: var(--bg-card);
+  border-radius: var(--card-radius);
+  padding: 12px 12px 16px;
+  box-shadow: 0 2px 12px var(--shadow);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  touch-action: manipulation;
+}
+
+.pin-card:active {
+  transform: scale(0.97);
+}
+
+.pin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--shadow-lg);
+}
+
+.pin-card .image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+}
+
+.pin-card .image-container img,
+.pin-card .image-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin-card .cw-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(225, 75, 106, 0.9);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+
+.pin-card h3 {
+  margin: 10px 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pin-card .byline {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pin-card .mini-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pin-card .mini-tags span {
+  font-size: 10px;
+  background: var(--tag-bg);
+  color: var(--accent4);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.pin-card .stats-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+/* ====== AUTH ====== */
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.auth-box {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 32px 28px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 32px var(--shadow-lg);
+  margin: 20px auto;
+  flex-shrink: 0;
+}
+
+.auth-box .brand-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-box .brand-center .brand-badge {
+  margin: 0 auto 8px;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+}
+
+.auth-box .brand-center h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.auth-box .brand-center .subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family-body);
+  font-size: 15px;
+}
+
+.auth-tabs button.active {
+  background: var(--accent4);
+  color: white;
+}
+
+.auth-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+  margin-top: 4px;
+}
+
+.auth-action-buttons .btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+
+.auth-form-fields {
+  margin-top: 4px;
+}
+
+/* ====== FORMS ====== */
+label {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: block;
+  margin: 12px 0 4px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  transition: border-color var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent4);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ====== BUTTONS ====== */
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 11px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+  background: var(--accent1);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family-body);
+  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn.secondary {
+  background: var(--accent2);
+}
+
+.btn.purple {
+  background: var(--accent4);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.btn.small {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ====== NOTIFICATION PANEL ====== */
+.notification-panel {
+  position: fixed;
+  top: 72px;
+  right: 16px;
+  width: 360px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px var(--shadow-lg);
+  padding: 16px;
+  z-index: 50;
+  border: 2px solid var(--border-color);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notification-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.notification-panel .panel-header h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.notification-panel .panel-header .close-panel {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0 4px;
+}
+
+.notification-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 13px;
+  position: relative;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item .notif-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.notification-item .dismiss-notif {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.notification-item .dismiss-notif:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* ============================================================
+   ====== BEAUTIFUL COMMENT SECTION ======
+   ============================================================ */
+
+.comments-section {
+  margin-top: 22px;
+  border-top: 2px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.comments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.comments-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.comments-header .comment-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.comment-input-wrapper {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  transition: border-color var(--transition-fast);
+}
+
+.comment-input-wrapper:focus-within {
+  border-color: var(--accent4);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.comment-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.comment-input-row .comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--tag-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--accent4);
+  flex-shrink: 0;
+}
+
+.comment-input-row textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 4px 0;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 36px;
+  max-height: 100px;
+  font-family: var(--font-family-body);
+  color: var(--text-primary);
+}
+
+.comment-input-row textarea:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.comment-input-row .comment-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.comment-input-row .comment-actions button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+  touch-action: manipulation;
+}
+
+.comment-input-row .comment-actions button:hover {
+  background: var(--tag-bg);
+  transform: scale(1.1);
+}
+
+.comment-input-row .comment-actions button:active {
+  transform: scale(0.9);
+}
+
+.comment-input-row .comment-actions .send-btn {
+  background: var(--accent4);
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 0;
+}
+
+.comment-input-row .comment-actions .send-btn:hover {
+  background: var(--accent1);
+  transform: scale(1.05);
+}
+
+.comment-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+.comment-toolbar .toolbar-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.comment-toolbar .toolbar-btn:hover {
+  background: var(--tag-bg);
+  transform: scale(1.1);
+}
+
+.comment-toolbar .toolbar-btn:active {
+  transform: scale(0.9);
+}
+
+.comment-toolbar .sticker-preview {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.comment-toolbar .sticker-preview:hover {
+  transform: scale(1.2);
+  border-color: var(--accent4);
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  animation: fadeInUp 0.3s ease;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-item .comment-avatar-lg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--tag-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--accent4);
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.comment-item .comment-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-item .comment-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.comment-item .comment-author .name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.comment-item .comment-author .badge-owner {
+  font-size: 9px;
+  background: var(--accent4);
+  color: white;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.comment-item .comment-author .time {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.comment-item .comment-text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 4px 0 8px;
+  word-break: break-word;
+  color: var(--text-primary);
+}
+
+.comment-item .comment-text .sticker-inline {
+  max-width: 80px;
+  max-height: 80px;
+  display: inline-block;
+  border-radius: 8px;
+  vertical-align: middle;
+}
+
+.comment-item .comment-actions-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.comment-item .comment-actions-row button {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.comment-item .comment-actions-row button:hover {
+  background: var(--tag-bg);
+  color: var(--text-primary);
+}
+
+.comment-item .comment-actions-row button:active {
+  transform: scale(0.9);
+}
+
+.comment-item .comment-actions-row .like-btn.active {
+  color: var(--danger);
+}
+
+.comment-item .comment-actions-row .like-btn.active:hover {
+  background: #fde3e8;
+}
+
+.comment-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.comment-reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 2px 10px 2px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.comment-reaction:hover {
+  background: var(--tag-bg);
+  transform: scale(1.05);
+}
+
+.comment-reaction:active {
+  transform: scale(0.9);
+}
+
+.comment-reaction.active {
+  background: var(--accent4);
+  border-color: var(--accent4);
+  color: white;
+}
+
+.comment-reaction .reaction-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.comment-reaction.active .reaction-count {
+  color: white;
+}
+
+.comment-replies {
+  margin-left: 52px;
+  padding-left: 16px;
+  border-left: 2px solid var(--border-color);
+}
+
+.comment-reply-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+.comment-reply-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  font-size: 13px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.comment-reply-form input:focus {
+  border-color: var(--accent4);
+  outline: none;
+}
+
+.comment-reply-form button {
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent4);
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.comment-reply-form button:active {
+  transform: scale(0.95);
+}
+
+/* ====== FONT CHOSER ====== */
+.font-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.font-option {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 3px solid var(--border-color);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+  touch-action: manipulation;
+}
+
+.font-option:active {
+  transform: scale(0.97);
+}
+
+.font-option.active {
+  border-color: var(--accent4);
+  background: var(--tag-bg);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+
+.font-option .font-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.font-option .font-preview {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 6px 0;
+  border-top: 2px dashed var(--border-color);
+  margin-top: 4px;
+}
+
+.font-option .font-preview small {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.font-option .check-mark {
+  display: none;
+  color: var(--accent4);
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+.font-option.active .check-mark {
+  display: inline-block;
+}
+
+.font-preview-demo {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  border: 2px dashed var(--border-color);
+}
+
+.font-preview-demo .demo-heading {
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.font-preview-demo .demo-body {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+}
+
+.font-preview-demo .demo-accent {
+  font-family: var(--font-family-accent);
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ====== MISC ====== */
+.chip {
+  display: inline-block;
+  border: 2px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 3px 4px 3px 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+.chip.active {
+  background: var(--accent4);
+  border-color: var(--accent4);
+  color: white;
+}
+
+.pronoun-chips,
+.gender-chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.error-msg {
+  background: #fde3e8;
+  color: #a52f47;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.success-msg {
+  background: #dcf7ec;
+  color: var(--success);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.board-note {
+  background: var(--bg-warning);
+  color: var(--warning);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px var(--shadow);
+  font-size: 14px;
+}
+
+.feed-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.feed-controls input[type=text] {
+  flex: 1;
+  min-width: 150px;
+}
+
+.feed-controls select {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (min-width: 768px) {
+  .bottom-nav { display: none; }
+  .sidebar { display: block; }
+  .main-content { padding: 20px 24px 24px 280px; }
+  .fab { right: 32px; bottom: 32px; }
+  .pinboard { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+}
+
+@media (min-width: 1024px) {
+  .pinboard { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
+  .main-content { padding: 24px 32px 32px 280px; }
+}
+
+@media (max-width: 480px) {
+  .topbar { padding: 8px 12px; height: 56px; }
+  .brand h1 { font-size: 16px; }
+  .brand .tagline { font-size: 8px; }
+  .brand-badge { width: 30px; height: 30px; font-size: 14px; }
+  .main-content { padding: 12px 12px 90px; }
+  .pinboard { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .pin-card h3 { font-size: 14px; }
+  .bottom-nav { height: 60px; padding: 4px 4px 8px; }
+  .bottom-nav button { min-width: 48px; padding: 4px 8px; font-size: 9px; }
+  .bottom-nav button .icon { font-size: 20px; }
+  .fab { width: 48px; height: 48px; font-size: 24px; bottom: 76px; right: 12px; }
+  .notification-panel { width: calc(100% - 24px); right: 12px; top: 64px; max-height: 60vh; }
+  .auth-box { 
+    padding: 20px 16px; 
+    border-radius: 16px;
+    margin: 10px auto;
+  }
+  .auth-wrap {
+    padding: 10px 12px;
+    align-items: flex-start;
+  }
+  .auth-tabs button {
+    padding: 10px;
+    font-size: 13px;
+  }
+  .auth-action-buttons .btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .font-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .comment-replies { margin-left: 0; padding-left: 0; border-left: none; }
+}
+
+/* ====== KEYBOARD PROTECTION ====== */
+.keyboard-open .pin-card,
+.keyboard-open .bottom-nav button,
+.keyboard-open .sidebar-nav button,
+.keyboard-open .fab {
+  pointer-events: none !important;
+}
+
+/* ====== MODAL STYLES ====== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--modal-overlay);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--bg-card);
+  border-radius: 20px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px 28px;
+  box-shadow: 0 8px 48px var(--shadow-lg);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all var(--transition-fast);
+  touch-action: manipulation;
+  margin-bottom: 8px;
+}
+
+.modal-close:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.modal-body {
+  clear: both;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state .big-emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ====== CREATOR CREDIT ====== */
+.creator-credit {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 2px solid var(--border-color);
+  text-align: center;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all var(--transition-medium);
+}
+
+.creator-credit .creator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--accent1), var(--accent4));
+  padding: 8px 20px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 2px 12px rgba(108, 92, 231, 0.3);
+}
+
+.creator-credit .creator-badge .heart {
+  animation: heartbeat 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+}
+
+.creator-credit .creator-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 8px 0 4px;
+}
+
+.creator-credit .creator-role {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.creator-credit .creator-socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.creator-credit .creator-socials a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.creator-credit .creator-socials a:hover {
+  background: var(--accent4);
+  color: white;
+  border-color: var(--accent4);
+  transform: translateY(-2px);
+}
+
+.creator-credit .creator-socials a .icon {
+  margin-right: 4px;
+}
+
+.creator-credit .copyright {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.creator-credit .version-tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--accent4);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-top: 6px;
+}
+
+/* ====== CHECKBOX FIX ====== */
+.nsfw-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nsfw-checkbox-container:hover {
+  border-color: var(--accent4);
+  background: var(--tag-bg);
+}
+
+.nsfw-checkbox-container input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.nsfw-checkbox-container input[type="checkbox"]:checked {
+  background: var(--accent4);
+  border-color: var(--accent4);
+}
+
+.nsfw-checkbox-container input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.nsfw-checkbox-container input[type="checkbox"]:focus {
+  outline: 2px solid var(--accent4);
+  outline-offset: 2px;
+}
+
+.nsfw-checkbox-container .nsfw-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ====== BG SWATCHES FIX ====== */
+.bg-swatches {
+  pointer-events: auto !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+}
+
+.bg-swatch {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+  position: relative !important;
+}
+
+.bg-swatch:hover {
+  transform: scale(1.05) !important;
+  border-color: var(--accent4) !important;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3) !important;
+}
+
+.bg-swatch.selected {
+  border-color: var(--text-primary) !important;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.3) !important;
+}
+
+.bg-swatch span {
+  pointer-events: none !important;
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ============================================================
+// PROJECTRABS — COMPLETE JAVASCRIPT
+// ============================================================
+
+// ====== GLOBALS ======
+let currentUser = null;
+let screen = 'auth';
+let tab = 'feed';
+let authMode = 'login';
+let editingOC = null;
+let openOC = null;
+let authError = '';
+let authSuccess = '';
+let ocFormError = '';
+let feedSearchQuery = '';
+let feedSortMode = 'newest';
+let feedFilterMode = 'all';
+let notificationPanelOpen = false;
+let notifications = [];
+let feedCache = [];
+let myOCsCache = [];
+let stickerLibCache = [];
+let formStickerLayers = [];
+let formImages = [];
+let formBgTheme = 'none';
+let selectedStickerId = null;
+let selectedPronoun = '';
+let selectedGender = '';
+let selectedProfilePronoun = '';
+let selectedProfileGender = '';
+let isKeyboardOpen = false;
+let isDesktop = window.innerWidth >= 768;
+
+// ====== FONT OPTIONS ======
+const FONT_OPTIONS = [
+  { id: 'quicksand', name: 'Quicksand', family: "'Quicksand', sans-serif", heading: "'Fredoka', sans-serif", accent: "'Space Mono', monospace", preview: 'Quicksand' },
+  { id: 'playfair', name: 'Playfair', family: "'Playfair Display', serif", heading: "'Playfair Display', serif", accent: "'Cormorant Garamond', serif", preview: 'Playfair' },
+  { id: 'dancing', name: 'Dancing Script', family: "'Dancing Script', cursive", heading: "'Dancing Script', cursive", accent: "'Great Vibes', cursive", preview: 'Dancing Script' },
+  { id: 'cormorant', name: 'Cormorant', family: "'Cormorant Garamond', serif", heading: "'Cormorant Garamond', serif", accent: "'Playfair Display', serif", preview: 'Cormorant' },
+  { id: 'montserrat', name: 'Montserrat', family: "'Montserrat', sans-serif", heading: "'Montserrat', sans-serif", accent: "'Raleway', sans-serif", preview: 'Montserrat' },
+  { id: 'poppins', name: 'Poppins', family: "'Poppins', sans-serif", heading: "'Poppins', sans-serif", accent: "'Quicksand', sans-serif", preview: 'Poppins' },
+  { id: 'merriweather', name: 'Merriweather', family: "'Merriweather', serif", heading: "'Merriweather', serif", accent: "'Playfair Display', serif", preview: 'Merriweather' },
+  { id: 'abril', name: 'Abril Fatface', family: "'Abril Fatface', cursive", heading: "'Abril Fatface', cursive", accent: "'Playfair Display', serif", preview: 'Abril Fatface' },
+  { id: 'raleway', name: 'Raleway', family: "'Raleway', sans-serif", heading: "'Raleway', sans-serif", accent: "'Montserrat', sans-serif", preview: 'Raleway' },
+  { id: 'oswald', name: 'Oswald', family: "'Oswald', sans-serif", heading: "'Oswald', sans-serif", accent: "'Raleway', sans-serif", preview: 'Oswald' },
+];
+
+// ====== EMOJI REACTIONS ======
+const EMOJI_REACTIONS = ['❤️', '😂', '😍', '🔥', '👏', '💀', '😭', '🤯', '🥰', '🎉', '💯', '🤔', '✨', '💖', '😊'];
+
+// ====== BG THEMES ======
+const BG_THEMES = [
+  { id: 'none', label: 'Plain Paper', cls: 'bg-none' },
+  { id: 'starrynight', label: 'Starry Night', cls: 'bg-starrynight' },
+  { id: 'sakura', label: 'Sakura Dream', cls: 'bg-sakura' },
+  { id: 'cyber', label: 'Cyber Grid', cls: 'bg-cyber' },
+  { id: 'meadow', label: 'Meadow', cls: 'bg-meadow' },
+  { id: 'deepsea', label: 'Deep Sea', cls: 'bg-deepsea' },
+  { id: 'sunset', label: 'Sunset Dunes', cls: 'bg-sunset' },
+  { id: 'cottoncandy', label: 'Cotton Candy', cls: 'bg-cottoncandy' },
+  { id: 'pride', label: 'Pride Stripes', cls: 'bg-pride' },
+];
+
+function bgClass(id) {
+  const f = BG_THEMES.find(b => b.id === id);
+  return f ? f.cls : 'bg-none';
+}
+
+// ====== THEMES ======
+const THEMES = {
+  bubblegum: { name: 'Bubblegum', type: 'light', bg: '#FBF3FF', accent1: '#FF6FA5', accent2: '#2EC4B6', accent3: '#FFD23F', accent4: '#6C5CE7', ink: '#3D2C5F' },
+  ocean: { name: 'Ocean Pop', type: 'light', bg: '#EEFBFF', accent1: '#00B4D8', accent2: '#0077B6', accent3: '#FFD23F', accent4: '#5AD1B0', ink: '#083B4C' },
+  sunshine: { name: 'Sunshine', type: 'light', bg: '#FFFBEA', accent1: '#FFB703', accent2: '#FB8500', accent3: '#8ECAE6', accent4: '#E85D75', ink: '#5A3E00' },
+  pride: { name: 'Pride Rainbow', type: 'light', bg: '#FFF6FB', accent1: '#FF5F6D', accent2: '#4AA9FF', accent3: '#FFD83F', accent4: '#A06BFF', ink: '#3D2C5F' },
+  galaxy: { name: 'Galaxy', type: 'light', bg: '#F3F0FF', accent1: '#B983FF', accent2: '#5E60CE', accent3: '#FFD23F', accent4: '#FF6FA5', ink: '#241E4E' },
+  meadow: { name: 'Meadow', type: 'light', bg: '#F3FFEF', accent1: '#7BC950', accent2: '#2EC4B6', accent3: '#FFD23F', accent4: '#FF9F6C', ink: '#254D1F' },
+  darkPurple: { name: 'Dark Purple', type: 'dark', themeAttr: 'dark-purple' },
+  darkBlue: { name: 'Dark Blue', type: 'dark', themeAttr: 'dark-blue' },
+  darkForest: { name: 'Dark Forest', type: 'dark', themeAttr: 'dark-forest' },
+  darkAmber: { name: 'Dark Amber', type: 'dark', themeAttr: 'dark-amber' },
+  darkRose: { name: 'Dark Rose', type: 'dark', themeAttr: 'dark-rose' },
+};
+
+const PRONOUN_OPTS = ['she/her', 'he/him', 'they/them', 'she/they', 'he/they', 'xe/xem', 'ze/zir', 'it/its', 'any pronouns', 'ask me'];
+const GENDER_OPTS = ['Woman', 'Man', 'Non-binary', 'Genderfluid', 'Agender', 'Genderqueer', 'Trans woman', 'Trans man', 'Two-Spirit', 'Questioning', 'Prefer not to say'];
+
+function applyTheme(key) {
+  const t = THEMES[key];
+  if (!t) return;
+  const html = document.documentElement;
+  html.removeAttribute('data-theme');
+  if (t.type === 'dark') {
+    html.setAttribute('data-theme', t.themeAttr);
+  }
+  const r = html.style;
+  if (t.type === 'light') {
+    r.setProperty('--bg', t.bg);
+    r.setProperty('--accent1', t.accent1);
+    r.setProperty('--accent2', t.accent2);
+    r.setProperty('--accent3', t.accent3);
+    r.setProperty('--accent4', t.accent4);
+    r.setProperty('--text-primary', t.ink);
+  }
+}
+
+function applyFont(fontId) {
+  const font = FONT_OPTIONS.find(f => f.id === fontId);
+  if (!font) return;
+  const html = document.documentElement;
+  html.style.setProperty('--font-family-body', font.family);
+  html.style.setProperty('--font-family-heading', font.heading);
+  html.style.setProperty('--font-family-accent', font.accent);
+  document.body.style.fontFamily = font.family;
+  if (currentUser) {
+    currentUser.fontPref = fontId;
+    sSet('user:' + currentUser.email, currentUser);
+  }
+}
+
+// ====== KEYBOARD DETECTION ======
+function detectKeyboard() {
+  const activeElement = document.activeElement;
+  const isInputFocused = activeElement && (
+    activeElement.tagName === 'INPUT' ||
+    activeElement.tagName === 'TEXTAREA' ||
+    activeElement.tagName === 'SELECT'
+  );
+  
+  const windowHeight = window.innerHeight;
+  const screenHeight = window.screen.height;
+  const heightRatio = windowHeight / screenHeight;
+  const keyboardLikelyOpen = heightRatio < 0.7 && windowHeight < 800;
+  
+  const newState = isInputFocused || keyboardLikelyOpen;
+  
+  if (newState !== isKeyboardOpen) {
+    isKeyboardOpen = newState;
+    document.body.classList.toggle('keyboard-open', isKeyboardOpen);
+  }
+}
+
+document.addEventListener('focusin', () => setTimeout(detectKeyboard, 100));
+document.addEventListener('focusout', () => setTimeout(detectKeyboard, 300));
+
+let lastHeight = window.innerHeight;
+window.addEventListener('resize', () => {
+  const currentHeight = window.innerHeight;
+  if (Math.abs(currentHeight - lastHeight) > 100) {
+    setTimeout(detectKeyboard, 200);
+  }
+  lastHeight = currentHeight;
+  isDesktop = window.innerWidth >= 768;
+});
+
+// ====== UTILITY ======
+function esc(s) { return (s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
+function nl2br(s) { return esc(s).replace(/\n/g, '<br>'); }
+
+function timeAgo(date) {
+  const now = new Date();
+  const diff = now - new Date(date);
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (seconds < 60) return 'just now';
+  if (minutes < 60) return minutes + 'm ago';
+  if (hours < 24) return hours + 'h ago';
+  if (days < 7) return days + 'd ago';
+  if (weeks < 4) return weeks + 'w ago';
+  if (months < 12) return months + 'mo ago';
+  return years + 'y ago';
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) + ' at ' +
+    d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+}
+
+function hashStr(s) { let h = 0; for (let i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) | 0; } return h; }
+function cardRotation(id) { return (Math.abs(hashStr(id)) % 5) - 2; }
+function simpleObscure(pw) { return btoa(unescape(encodeURIComponent('salt-oc-haven::' + pw))); }
+function uid() { return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8); }
+
+function isVideo(url) { return /\.(mp4|webm|ogg|mov|avi|mkv)$/i.test(url) || (url && url.startsWith('data:video')); }
+function isGif(url) { return /\.gif$/i.test(url) || (url && url.startsWith('data:image/gif')); }
+function isImage(url) { return /\.(png|jpg|jpeg|webp|bmp|svg)$/i.test(url) || url.startsWith('data:image/'); }
+
+// ====== STORAGE ======
+async function sGet(key) {
+  try {
+    if (window.storage && typeof window.storage.get === 'function') {
+      const r = await window.storage.get(key, true);
+      return r ? JSON.parse(r.value) : null;
+    }
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+  } catch (e) { return null; }
+}
+
+async function sSet(key, val) {
+  try {
+    if (window.storage && typeof window.storage.set === 'function') {
+      return window.storage.set(key, JSON.stringify(val), true);
+    }
+    localStorage.setItem(key, JSON.stringify(val));
+    return true;
+  } catch (e) { return null; }
+}
+
+async function sDelete(key) {
+  try {
+    if (window.storage && typeof window.storage.delete === 'function') {
+      return await window.storage.delete(key, true);
+    }
+    localStorage.removeItem(key);
+    return true;
+  } catch (e) { return null; }
+}
+
+async function sList(prefix) {
+  try {
+    if (window.storage && typeof window.storage.list === 'function') {
+      const r = await window.storage.list(prefix, true);
+      return r ? r.keys : [];
+    }
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(prefix)) keys.push(k);
+    }
+    return keys;
+  } catch (e) { return []; }
+}
+
+// ====== NOTIFICATIONS ======
+async function addNotificationForUser(userEmail, message, type = 'info') {
+  if (!userEmail) return;
+  const key = 'notifications:' + userEmail;
+  let userNotifs = await sGet(key) || [];
+  userNotifs.unshift({ id: uid(), message, type, date: new Date().toISOString(), read: false });
+  if (userNotifs.length > 100) userNotifs.pop();
+  await sSet(key, userNotifs);
+  if (currentUser && userEmail === currentUser.email) {
+    notifications = userNotifs;
+    if (notificationPanelOpen) render();
+  }
+}
+
+async function loadNotificationsForUser(email) {
+  if (!email) return [];
+  const key = 'notifications:' + email;
+  return await sGet(key) || [];
+}
+
+async function deleteNotification(userEmail, notificationId) {
+  if (!userEmail || !notificationId) return;
+  const key = 'notifications:' + userEmail;
+  let userNotifs = await sGet(key) || [];
+  userNotifs = userNotifs.filter(n => n.id !== notificationId);
+  await sSet(key, userNotifs);
+  if (currentUser && userEmail === currentUser.email) {
+    notifications = userNotifs;
+    render();
+  }
+}
+
+async function clearAllNotifications(userEmail) {
+  if (!userEmail) return;
+  const key = 'notifications:' + userEmail;
+  await sSet(key, []);
+  if (currentUser && userEmail === currentUser.email) {
+    notifications = [];
+    render();
+  }
+}
+
+// ====== DATA LOADERS ======
+async function loadFeed() {
+  const keys = await sList('oc:');
+  const ocs = [];
+  for (const k of keys) {
+    const oc = await sGet(k);
+    if (oc) ocs.push(oc);
+  }
+  feedCache = ocs;
+  console.log('📚 Loaded all posts:', feedCache.length);
+  return feedCache;
+}
+
+async function loadMyOCs() {
+  if (!currentUser) return [];
+  myOCsCache = feedCache.filter(oc => oc.owner === currentUser.email);
+  console.log('📚 My posts:', myOCsCache.length);
+  return myOCsCache;
+}
+
+async function loadStickerLib() {
+  const s = await sGet('stickers:' + currentUser.email);
+  stickerLibCache = s || [];
+  return stickerLibCache;
+}
+
+function getFilteredFeed() {
+  // Make sure we're using ALL posts from feedCache
+  let results = [...feedCache];
+  
+  console.log('📊 Total posts in feed:', results.length);
+  
+  // Apply search filter
+  if (feedSearchQuery) {
+    const q = feedSearchQuery.toLowerCase();
+    results = results.filter(oc =>
+      (oc.name || '').toLowerCase().includes(q) ||
+      (oc.ownerName || '').toLowerCase().includes(q) ||
+      (oc.pronouns || '').toLowerCase().includes(q) ||
+      (oc.gender || '').toLowerCase().includes(q) ||
+      (oc.desc || '').toLowerCase().includes(q) ||
+      (oc.tags || []).some(t => t.toLowerCase().includes(q))
+    );
+  }
+  
+  // Apply NSFW filter
+  if (feedFilterMode === 'nsfw') {
+    results = results.filter(oc => oc.contentWarning === true);
+  } else if (feedFilterMode === 'sfw') {
+    results = results.filter(oc => !oc.contentWarning);
+  }
+  // 'all' shows everything
+
+  // Apply sorting
+  if (feedSortMode === 'newest') {
+    results.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else if (feedSortMode === 'oldest') {
+    results.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+  } else if (feedSortMode === 'popular') {
+    results.sort((a, b) => (b.likes || []).length - (a.likes || []).length);
+  } else if (feedSortMode === 'mostcommented') {
+    results.sort((a, b) => (b.comments || []).length - (a.comments || []).length);
+  }
+  
+  console.log('📊 Filtered results:', results.length);
+  return results;
+}
+
+function getOCRelationships(oc) {
+  const rels = [];
+  if (oc && oc.relationships) {
+    for (const rel of oc.relationships) {
+      const target = feedCache.find(o => o.id === rel.targetId);
+      if (target) rels.push({ ...rel, target });
+    }
+  }
+  return rels;
+}
+
+function getCommentReactions(comment) {
+  if (!comment.reactions) return {};
+  return comment.reactions;
+}
+
+function toggleCommentReaction(comment, emoji) {
+  if (!comment.reactions) comment.reactions = {};
+  const key = emoji;
+  if (!comment.reactions[key]) comment.reactions[key] = [];
+  const userIndex = comment.reactions[key].indexOf(currentUser.email);
+  if (userIndex >= 0) {
+    comment.reactions[key].splice(userIndex, 1);
+    if (comment.reactions[key].length === 0) {
+      delete comment.reactions[key];
+    }
+  } else {
+    comment.reactions[key].push(currentUser.email);
+  }
+  return comment;
+}
+
+function toggleCommentLike(comment) {
+  if (!comment.likes) comment.likes = [];
+  const idx = comment.likes.indexOf(currentUser.email);
+  if (idx >= 0) {
+    comment.likes.splice(idx, 1);
+  } else {
+    comment.likes.push(currentUser.email);
+  }
+  return comment;
+}
+
+// ====== FILE HANDLING ======
+function fileToResizedDataURL(file, maxDim) {
+  return new Promise((resolve, reject) => {
+    if (!file) return resolve(null);
+    if (file.size > 10 * 1024 * 1024) {
+      reject(new Error('File too large (max 10MB).'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (file.type.startsWith('video/')) {
+        resolve(reader.result);
+        return;
+      }
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width > height) { height = Math.round(height * maxDim / width);
+            width = maxDim; } else { width = Math.round(width * maxDim / height);
+            height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror = () => {
+        if (file.type === 'image/gif' || file.type === 'image/webp') {
+          resolve(reader.result);
+        } else {
+          reject(new Error('Could not read that image file.'));
+        }
+      };
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('Could not read that file.'));
+    reader.readAsDataURL(file);
+  });
+}
+
+// ====== RENDER ======
+function render() {
+  const app = document.getElementById('app');
+  if (screen === 'auth') {
+    app.innerHTML = renderAuthScreen();
+  } else {
+    app.innerHTML = renderAppScreen();
+  }
+  attachHandlers();
+  setTimeout(detectKeyboard, 100);
+}
+
+// ====== AUTH SCREEN ======
+function renderAuthScreen() {
+  let inner = '';
+  if (authMode === 'login') {
+    inner = `
+      <div class="auth-tabs">
+        <button data-auth-tab="login" class="active">🔑 Log in</button>
+        <button data-auth-tab="signup">✨ Sign up</button>
+      </div>
+      
+      <div class="auth-action-buttons">
+        <button class="btn purple" id="login-action-btn" style="font-size:16px;padding:14px;">🔓 Log In</button>
+      </div>
+      
+      <div class="auth-form-fields">
+        <form id="login-form">
+          <label>Username</label>
+          <input type="text" name="email" required placeholder="your username">
+          <label>Password</label>
+          <input type="password" name="password" required placeholder="••••••••">
+          ${authError ? `<div class="error-msg">${esc(authError)}</div>` : ''}
+          ${authSuccess ? `<div class="success-msg">${esc(authSuccess)}</div>` : ''}
+        </form>
+      </div>`;
+  } else {
+    inner = `
+      <div class="auth-tabs">
+        <button data-auth-tab="login">🔑 Log in</button>
+        <button data-auth-tab="signup" class="active">✨ Sign up</button>
+      </div>
+      
+      <div class="auth-action-buttons">
+        <button class="btn secondary" id="signup-action-btn" style="font-size:16px;padding:14px;">🚀 Sign Up</button>
+      </div>
+      
+      <div class="auth-form-fields">
+        <form id="signup-form">
+          <label>Display name</label>
+          <input type="text" name="displayName" required maxlength="30" placeholder="What should we call you?">
+          <label>Username</label>
+          <input type="text" name="email" required placeholder="your username">
+          <label>Password</label>
+          <input type="password" name="password" required minlength="6" placeholder="At least 6 characters">
+          ${authError ? `<div class="error-msg">${esc(authError)}</div>` : ''}
+        </form>
+      </div>`;
+  }
+  return `
+    <div class="auth-wrap">
+      <div class="auth-box">
+        <div class="brand-center">
+          <div class="brand-badge">🎨</div>
+          <h1>ProjectRabs</h1>
+          <div class="subtitle">A CORKBOARD FOR YOUR CHARACTERS</div>
+        </div>
+        <div style="background:var(--bg-secondary);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--text-secondary);margin-bottom:12px;font-weight:600;">
+          🏳️‍🌈 ProjectRabs is an LGBTQIA+ inclusive space — every profile lets you set your own pronouns and gender, your way.
+        </div>
+        ${inner}
+      </div>
+    </div>`;
+}
+
+// ====== APP SCREEN ======
+function renderAppScreen() {
+  const tabs = [
+    { id: 'feed', icon: '🧵', label: 'Feed' },
+    { id: 'myocs', icon: '🗂️', label: 'My OCs' },
+    { id: 'stickers', icon: '✨', label: 'Stickers' },
+    { id: 'settings', icon: '⚙️', label: 'Settings' }
+  ];
+
+  let body = '';
+  if (tab === 'feed') body = renderFeedTab();
+  else if (tab === 'myocs') body = renderMyOCsTab();
+  else if (tab === 'oc-form') body = renderOCFormTab();
+  else if (tab === 'stickers') body = renderStickersTab();
+  else if (tab === 'settings') body = renderSettingsTab();
+
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  let topbar = `
+    <div class="topbar">
+      <div class="brand" id="brand-toggle">
+        <div class="brand-badge">🎨</div>
+        <div class="brand-text">
+          <h1>ProjectRabs</h1>
+          <span class="tagline">a corkboard for your characters</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="notif-bell" id="notif-bell" style="position:relative;font-size:22px;cursor:pointer;padding:4px 8px;user-select:none;touch-action:manipulation;">
+          🔔${unreadCount > 0 ? `<span style="position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;">${unreadCount}</span>` : ''}
+        </div>
+        <button id="logout-btn" class="btn danger small" style="padding:6px 12px;font-size:12px;">Log out</button>
+      </div>
+    </div>
+  `;
+
+  let sidebar = `
+    <div class="sidebar open" id="sidebar">
+      <nav class="sidebar-nav">
+        ${tabs.map(t => `
+          <button data-tab="${t.id}" class="${tab === t.id || (t.id === 'myocs' && tab === 'oc-form') ? 'active' : ''}">
+            <span class="icon">${t.icon}</span>
+            <span class="label">${t.label}</span>
+          </button>
+        `).join('')}
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-card" data-tab="settings">
+          <div class="avatar" style="${currentUser.avatar ? `background-image:url(${currentUser.avatar});` : ''}">
+            ${currentUser.avatar ? '' : esc((currentUser.displayName || 'P').slice(0, 1))}
+          </div>
+          <div class="user-info">
+            <div class="name">${esc(currentUser.displayName)}</div>
+            <div class="pronouns">${currentUser.pronouns || 'No pronouns set'}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  let bottomNav = `
+    <div class="bottom-nav" id="bottom-nav">
+      ${tabs.map(t => `
+        <button data-tab="${t.id}" class="${tab === t.id || (t.id === 'myocs' && tab === 'oc-form') ? 'active' : ''}">
+          <span class="icon">${t.icon}</span>
+          <span class="label">${t.label}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+
+  let fab = `
+    <button class="fab" id="fab-btn" title="New OC">➕</button>
+  `;
+
+  let notifPanel = notificationPanelOpen ? renderNotificationsPanel() : '';
+
+  return `
+    ${topbar}
+    ${isDesktop ? sidebar : ''}
+    <div class="main-content" id="main-content">
+      ${notifPanel}
+      ${body}
+    </div>
+    ${!isDesktop ? bottomNav : ''}
+    ${!isDesktop ? fab : ''}
+  `;
+}
+
+// ====== NOTIFICATIONS PANEL ======
+function renderNotificationsPanel() {
+  return `
+    <div class="notification-panel" id="notif-panel">
+      <div class="panel-header">
+        <h3>🔔 Notifications</h3>
+        <button class="close-panel" id="close-notif-panel">✕</button>
+      </div>
+      ${notifications.length === 0 ? '<p style="color:var(--text-secondary);padding:10px 0;text-align:center;">No notifications yet.</p>' :
+        notifications.map(n => `
+          <div class="notification-item">
+            ${n.message}
+            <div class="notif-time">${formatDate(n.date)}</div>
+            <button class="dismiss-notif" data-notif-id="${n.id}" title="Dismiss notification">✕</button>
+          </div>
+        `).join('')
+      }
+      ${notifications.length > 0 ? `
+        <button class="btn small" id="clear-notifs" style="margin-top:10px;width:100%;">Clear all</button>
+      ` : ''}
+    </div>
+  `;
+}
+
+// ====== FEED TAB ======
+function renderFeedTab() {
+  const results = getFilteredFeed();
+  return `
+    <div class="board-note">📌 Everyone's characters, pinned up in one place. Tap any card to read the full story, like it, or leave a comment.</div>
+    <div class="feed-controls">
+      <input type="text" id="feed-search" placeholder="🔍 Search by name, creator, tags..." value="${esc(feedSearchQuery)}">
+      <select id="feed-sort">
+        <option value="newest" ${feedSortMode === 'newest' ? 'selected' : ''}>Newest</option>
+        <option value="oldest" ${feedSortMode === 'oldest' ? 'selected' : ''}>Oldest</option>
+        <option value="popular" ${feedSortMode === 'popular' ? 'selected' : ''}>Most Liked</option>
+        <option value="mostcommented" ${feedSortMode === 'mostcommented' ? 'selected' : ''}>Most Commented</option>
+      </select>
+      <select id="feed-filter">
+        <option value="all" ${feedFilterMode === 'all' ? 'selected' : ''}>All Posts</option>
+        <option value="sfw" ${feedFilterMode === 'sfw' ? 'selected' : ''}>SFW Only</option>
+        <option value="nsfw" ${feedFilterMode === 'nsfw' ? 'selected' : ''}>NSFW Only</option>
+      </select>
+    </div>
+    ${results.length === 0 ? `
+      <div class="empty-state">
+        <span class="big-emoji">🖇️</span>
+        ${feedCache.length === 0 ? 'No posts have been created yet. Be the first to post a character!' : feedSearchQuery ? `No characters or creators matched "${esc(feedSearchQuery)}".` : 'No posts match your current filters.'}
+      </div>` : `
+    <div class="pinboard">
+      ${results.map(oc => renderPinCard(oc)).join('')}
+    </div>`}
+  `;
+}
+
+function renderPinCard(oc) {
+  const rot = cardRotation(oc.id);
+  const likeCount = (oc.likes || []).length;
+  const commentCount = (oc.comments || []).length;
+  const hasCW = oc.contentWarning;
+  const imageSrc = (oc.images && oc.images.length) ? oc.images[0] : oc.image || '';
+  const isVideoFile = imageSrc && isVideo(imageSrc);
+  
+  return `
+  <div class="pin-card" style="transform:rotate(${rot}deg);" data-open-oc="${oc.id}">
+    <div class="image-container">
+      ${imageSrc ? (isVideoFile ?
+        `<video src="${imageSrc}" muted playsinline></video>` :
+        `<img src="${imageSrc}" loading="lazy">`) :
+        `<div style="width:100%;height:100%;background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;font-size:40px;">🎨</div>`}
+      ${hasCW ? `<span class="cw-badge">⚠️ NSFW</span>` : ''}
+    </div>
+    <h3>${esc(oc.name)}</h3>
+    <div class="byline">by ${esc(oc.ownerName)}</div>
+    <div class="mini-tags">${oc.pronouns ? `<span>${esc(oc.pronouns)}</span>` : ''}${oc.gender ? `<span>${esc(oc.gender)}</span>` : ''}</div>
+    ${oc.tags && oc.tags.length ? `<div class="mini-tags">${oc.tags.slice(0, 3).map(t => `<span>#${esc(t)}</span>`).join('')}</div>` : ''}
+    <div class="stats-row"><span>❤️ ${likeCount}</span><span>💬 ${commentCount}</span></div>
+  </div>`;
+}
+
+// ====== MY OCS TAB ======
+function renderMyOCsTab() {
+  return `
+    <div style="background:var(--bg-card);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <h2 style="margin:0;font-size:20px;">🗂️ My OCs <span style="font-size:13px;color:var(--text-secondary);font-weight:600;">(${myOCsCache.length})</span></h2>
+        <button class="btn purple" id="new-oc-btn">+ New OC</button>
+      </div>
+      ${myOCsCache.length === 0 ? `
+        <div class="empty-state"><span class="big-emoji">🎨</span>You haven't posted any characters yet.</div>
+      ` : `
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;">
+          ${myOCsCache.map(oc => `
+            <div style="background:var(--bg-secondary);border-radius:12px;padding:12px;text-align:center;box-shadow:0 2px 8px var(--shadow);">
+              <div style="width:100%;aspect-ratio:1;overflow:hidden;border-radius:8px;background:var(--bg-secondary);">
+                ${(oc.images && oc.images.length) ? `<img src="${oc.images[0]}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">` :
+                 oc.image ? `<img src="${oc.image}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">` :
+                 `<div style="width:100%;height:100%;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;font-size:32px;">🎨</div>`}
+              </div>
+              <h4 style="margin:8px 0 4px;font-size:14px;">${esc(oc.name)} ${oc.contentWarning ? '⚠️' : ''}</h4>
+              <div style="display:flex;gap:6px;justify-content:center;margin-top:8px;flex-wrap:wrap;">
+                <button class="btn small" data-open-oc="${oc.id}">View</button>
+                <button class="btn small secondary" data-edit-oc="${oc.id}">Edit</button>
+              </div>
+            </div>`).join('')}
+        </div>`}
+    </div>`;
+}
+
+// ====== STICKERS TAB ======
+function renderStickersTab() {
+  return `
+    <div style="background:var(--bg-card);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <h2 style="margin:0;font-size:20px;">✨ My Sticker Sheet</h2>
+        <label style="display:inline-block;background:var(--tag-bg);color:var(--accent4);border:2px dashed var(--accent4);padding:8px 16px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;">
+          + Upload sticker
+          <input type="file" accept="image/*" id="sticker-upload" style="display:none;">
+        </label>
+      </div>
+      <p style="color:var(--text-secondary);font-size:13px;">Upload little PNGs (transparent backgrounds work best!) to decorate your OC pages.</p>
+      ${stickerLibCache.length === 0 ? `
+        <div class="empty-state"><span class="big-emoji">🧷</span>No stickers yet — upload your first one!</div>
+      ` : `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:16px;margin-top:12px;">
+        ${stickerLibCache.map((s, i) => `
+          <div style="background:var(--bg-card);border-radius:50%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px var(--shadow);position:relative;padding:10px;border:3px dashed var(--border-color);">
+            <img src="${s}" style="max-width:100%;max-height:100%;object-fit:contain;">
+            <button class="del" data-del-sticker="${i}" style="position:absolute;top:2px;right:2px;width:22px;height:22px;border-radius:50%;background:var(--danger);color:white;border:none;font-size:12px;font-weight:700;cursor:pointer;">✕</button>
+          </div>`).join('')}
+      </div>`}
+    </div>`;
+}
+
+// ====== SETTINGS TAB ======
+function renderSettingsTab() {
+  return `
+    <div style="background:var(--bg-card);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);">
+      <h2 style="margin:0 0 20px 0;font-size:20px;">⚙️ Settings</h2>
+      ${renderProfileTab()}
+      ${renderAppearanceTab()}
+      ${renderFontTab()}
+      
+      <div class="creator-credit">
+        <div class="creator-badge">
+          <span class="heart">❤️</span>
+          Made with love by
+          <span style="font-weight:800;">ProjectRabs</span>
+          <span class="heart">❤️</span>
+        </div>
+        <div class="creator-name">🎨 The Website Maker</div>
+        <div class="creator-role">✨ Full-Stack Developer & UI/UX Designer</div>
+        <div class="creator-socials">
+          <a href="#" onclick="return false;"><span class="icon">🐦</span> Twitter</a>
+          <a href="https://github.com/Rabbythecalico" target="_blank" rel="noopener noreferrer"><span class="icon">💻</span> GitHub</a>
+          <a href="mailto:franciseco603@gmail.com"><span class="icon">📧</span> Gmail</a>
+          <a href="#" onclick="return false;"><span class="icon">🎨</span> Portfolio</a>
+        </div>
+        <div class="version-tag">v2.0.0 • Beautiful Comments Edition</div>
+        <div class="copyright">© 2026 ProjectRabs — A Corkboard for Your Characters</div>
+      </div>
+    </div>`;
+}
+
+function renderProfileTab() {
+  const u = currentUser;
+  return `
+    <div style="margin-top:20px;padding-top:16px;border-top:2px solid var(--border-color);">
+      <h3 style="margin:0 0 6px 0;font-size:17px;">🙋 My Profile</h3>
+      <div style="background:var(--bg-secondary);border-radius:12px;padding:8px 14px;font-size:12px;color:var(--text-secondary);margin-bottom:12px;font-weight:600;">
+        Describe yourself however feels right. Nothing here is required except your display name.
+      </div>
+      <form id="profile-form">
+        <label>Display name</label>
+        <input type="text" name="displayName" required maxlength="30" value="${esc(u.displayName)}">
+
+        <label>Pronouns</label>
+        <div class="pronoun-chips" id="profile-pronoun-chips">
+          ${PRONOUN_OPTS.map(p => `
+            <span class="chip ${u.pronouns === p ? 'active' : ''}" data-chip-group="profile-pronouns" data-value="${esc(p)}">${p}</span>
+          `).join('')}
+        </div>
+        <input type="text" name="pronouns" id="profile-pronouns" maxlength="40" value="${esc(u.pronouns || '')}" placeholder="Pick a chip or type your own">
+
+        <label>Gender</label>
+        <div class="gender-chips" id="profile-gender-chips">
+          ${GENDER_OPTS.map(g => `
+            <span class="chip ${u.gender === g ? 'active' : ''}" data-chip-group="profile-gender" data-value="${esc(g)}">${g}</span>
+          `).join('')}
+        </div>
+        <input type="text" name="gender" id="profile-gender" maxlength="40" value="${esc(u.gender || '')}" placeholder="Pick a chip or type your own">
+
+        <label>Bio</label>
+        <textarea name="bio" maxlength="500" placeholder="A little about you...">${esc(u.bio || '')}</textarea>
+        <button class="btn purple" style="margin-top:12px;" type="submit">Save profile</button>
+        <span id="profile-saved" style="display:none;color:var(--success);font-weight:700;margin-left:10px;">Saved! ✅</span>
+      </form>
+    </div>`;
+}
+
+function renderAppearanceTab() {
+  return `
+    <div style="margin-top:20px;padding-top:16px;border-top:2px solid var(--border-color);">
+      <h3 style="margin:0 0 6px 0;font-size:17px;">🎨 Theme</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Pick a color theme for the whole site.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;">
+        ${Object.entries(THEMES).map(([key, t]) => `
+          <div class="theme-swatch ${currentUser.themePref === key ? 'selected' : ''}" data-theme="${key}"
+               style="border-radius:12px;padding:12px;cursor:pointer;border:3px solid ${currentUser.themePref === key ? 'var(--text-primary)' : 'transparent'};color:white;font-weight:700;font-size:12px;box-shadow:0 2px 8px var(--shadow);background:linear-gradient(135deg, ${t.accent1 || '#FF6FA5'}, ${t.accent4 || '#6C5CE7'});">
+            ${t.name} ${t.type === 'dark' ? '🌙' : '☀️'}
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function renderFontTab() {
+  const currentFont = currentUser.fontPref || 'quicksand';
+  return `
+    <div style="margin-top:20px;padding-top:16px;border-top:2px solid var(--border-color);">
+      <h3 style="margin:0 0 6px 0;font-size:17px;">🔤 Font Style</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Choose a font that matches your vibe! This will change the look of the entire site.</p>
+      <div class="font-preview-demo">
+        <div class="demo-heading">✨ Character Name</div>
+        <div class="demo-body">This is how your OC descriptions will look with this font.</div>
+        <div class="demo-accent">✦ Special accents like this ✦</div>
+      </div>
+      <div class="font-grid">
+        ${FONT_OPTIONS.map(f => `
+          <div class="font-option ${currentFont === f.id ? 'active' : ''}" data-font="${f.id}" style="font-family: ${f.family};">
+            <div class="font-name">
+              ${f.name}
+              <span class="check-mark">✅</span>
+            </div>
+            <div class="font-preview" style="font-family: ${f.family};">
+              ${f.preview}
+              <br><small>123 ABC</small>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <p style="font-size:11px;color:var(--text-secondary);margin-top:10px;">💡 Font preference is saved to your profile automatically when you click one.</p>
+    </div>`;
+}
+
+// ====== OC FORM TAB - FIXED ======
+function renderOCFormTab() {
+  const oc = editingOC;
+  if (oc && formStickerLayers.length === 0 && oc.stickerLayers) {
+    formStickerLayers = oc.stickerLayers.map(l => ({ ...l }));
+  }
+  if (oc && formImages.length === 0 && oc.images) {
+    formImages = [...oc.images];
+  }
+  if (oc) {
+    formBgTheme = oc.bgTheme || 'none';
+    selectedPronoun = oc.pronouns || '';
+    selectedGender = oc.gender || '';
+  }
+
+  const hasImages = formImages.length > 0;
+  const isChecked = (oc && oc.contentWarning === true);
+
+  return `
+    <div style="background:var(--bg-card);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);">
+      <h2 style="margin-top:0;">${oc ? '✏️ Edit' : '✨ New'} Character</h2>
+      <form id="oc-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;">
+          <div>
+            <label>Name</label>
+            <input type="text" name="name" required maxlength="40" value="${oc ? esc(oc.name) : ''}" placeholder="Character's name">
+
+            <label>Pronouns</label>
+            <div class="pronoun-chips" id="oc-pronoun-chips">
+              ${PRONOUN_OPTS.map(p => `
+                <span class="chip ${selectedPronoun === p ? 'active' : ''}" data-chip-group="oc-pronouns" data-value="${esc(p)}">${p}</span>
+              `).join('')}
+            </div>
+            <input type="text" name="pronouns" id="oc-pronouns" maxlength="40" value="${esc(selectedPronoun)}" placeholder="Pick a chip above or type your own">
+
+            <label>Gender</label>
+            <div class="gender-chips" id="oc-gender-chips">
+              ${GENDER_OPTS.map(g => `
+                <span class="chip ${selectedGender === g ? 'active' : ''}" data-chip-group="oc-gender" data-value="${esc(g)}">${g}</span>
+              `).join('')}
+            </div>
+            <input type="text" name="gender" id="oc-gender" maxlength="40" value="${esc(selectedGender)}" placeholder="Pick a chip above or type your own">
+
+            <label>Tags (comma separated)</label>
+            <input type="text" name="tags" maxlength="200" value="${oc ? esc((oc.tags || []).join(', ')) : ''}" placeholder="fantasy, elf, warrior, etc.">
+          </div>
+          <div>
+            <label>Character images (multiple)</label>
+            <label class="upload-btn" style="display:inline-block;background:var(--tag-bg);color:var(--accent4);border:2px dashed var(--accent4);padding:10px 16px;border-radius:12px;font-weight:700;font-size:13px;text-align:center;cursor:pointer;">
+              📷 Add image/video
+              <input type="file" accept="image/*,video/*" id="oc-image-input" multiple style="display:none;">
+            </label>
+            <div id="image-preview-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-top:8px;">
+              ${formImages.map((src, i) => `
+                <div style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:1;background:var(--bg-secondary);border:2px solid var(--border-color);">
+                  ${isVideo(src) ? 
+                    `<video src="${src}" muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>` : 
+                    `<img src="${src}" style="width:100%;height:100%;object-fit:cover;">`}
+                  <button type="button" style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:var(--danger);color:white;border:none;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.3);" data-remove-image="${i}">✕</button>
+                </div>`).join('')}
+            </div>
+            ${!hasImages ? `<p style="color:var(--text-secondary);font-size:13px;margin-top:8px;">📸 No images uploaded yet. Click the button above to add some!</p>` : `<p style="color:var(--text-secondary);font-size:13px;margin-top:8px;">✅ ${formImages.length} image(s) uploaded. Click ✕ to remove.</p>`}
+            <label>Background theme</label>
+            <div class="bg-swatches" id="bg-swatches" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;pointer-events:auto;">
+              ${BG_THEMES.map(b => `
+                <div class="bg-swatch ${b.cls} ${(formBgTheme === b.id) ? 'selected' : ''}" 
+                     data-bg="${b.id}" 
+                     style="width:80px;height:44px;border-radius:8px;border:3px solid ${(formBgTheme === b.id) ? 'var(--text-primary)' : 'transparent'};display:flex;align-items:flex-end;padding:4px 6px;font-size:9px;font-weight:700;color:white;text-shadow:0 1px 2px rgba(0,0,0,0.5);cursor:pointer;background:${bgClass(b.id)};pointer-events:auto;transition:all 0.2s ease;user-select:none;">
+                  <span style="pointer-events:none;">${b.label}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+        <label>Description / backstory</label>
+        <textarea name="desc" required maxlength="4000" placeholder="Tell us about this character...">${oc ? esc(oc.desc) : ''}</textarea>
+
+        <label>Stickers from your sticker sheet</label>
+        <div class="sticker-grid" id="oc-sticker-picker" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:18px;margin-top:16px;">
+          ${stickerLibCache.map(s => `
+            <div class="sticker-slot" data-sticker-add="${esc(s)}" style="background:var(--bg-card);border-radius:50%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px var(--shadow);position:relative;padding:10px;border:3px dashed var(--border-color);cursor:pointer;">
+              <img src="${s}" style="max-width:100%;max-height:100%;object-fit:contain;">
+            </div>`).join('')}
+        </div>
+
+        <!-- NSFW CHECKBOX -->
+        <div class="nsfw-checkbox-container">
+          <input type="checkbox" name="contentWarning" id="contentWarningCheckbox" ${isChecked ? 'checked' : ''}>
+          <label for="contentWarningCheckbox" class="nsfw-label">⚠️ This post contains mature content (NSFW)</label>
+        </div>
+
+        ${ocFormError ? `<div class="error-msg">${esc(ocFormError)}</div>` : ''}
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+          <button class="btn purple" type="submit">${oc ? 'Save changes' : 'Pin to the board'}</button>
+          <button class="btn ghost" type="button" id="cancel-oc-form">Cancel</button>
+        </div>
+      </form>
+    </div>`;
+}
+
+// ====== BEAUTIFUL COMMENT RENDERER ======
+function renderBeautifulComments(oc) {
+  const comments = oc.comments || [];
+  const isOwner = currentUser && oc.owner === currentUser.email;
+  
+  let html = `
+    <div class="comments-section">
+      <div class="comments-header">
+        <h3>💬 Comments</h3>
+        <span class="comment-count">${comments.length} ${comments.length === 1 ? 'comment' : 'comments'}</span>
+      </div>
+  `;
+
+  html += `
+    <div class="comment-input-wrapper">
+      <div class="comment-input-row">
+        <div class="comment-avatar" style="${currentUser.avatar ? `background-image:url(${currentUser.avatar});background-size:cover;` : ''}">
+          ${currentUser.avatar ? '' : esc((currentUser.displayName || 'P').slice(0, 1))}
+        </div>
+        <textarea id="comment-textarea" rows="1" placeholder="Write a comment..." maxlength="500"></textarea>
+        <div class="comment-actions">
+          <button class="send-btn" id="send-comment-btn" title="Send comment">➤</button>
+        </div>
+      </div>
+      <div class="comment-toolbar">
+        ${EMOJI_REACTIONS.slice(0, 8).map(emoji => `
+          <button class="toolbar-btn" data-emoji="${esc(emoji)}" title="${esc(emoji)}">${emoji}</button>
+        `).join('')}
+        <span style="color:var(--text-muted);font-size:12px;padding:0 4px;">|</span>
+        ${stickerLibCache.slice(0, 6).map(s => `
+          <img class="sticker-preview" src="${s}" data-sticker="${esc(s)}" title="Insert sticker">
+        `).join('')}
+        ${stickerLibCache.length > 6 ? `<span style="color:var(--text-muted);font-size:11px;">+${stickerLibCache.length - 6} more</span>` : ''}
+      </div>
+    </div>
+  `;
+
+  if (comments.length === 0) {
+    html += `<p style="color:var(--text-secondary);font-size:14px;padding:20px 0;text-align:center;">No comments yet — be the first to say something! 💬</p>`;
+  } else {
+    html += `<div class="comments-list">`;
+    comments.forEach((comment, idx) => {
+      html += renderCommentItem(comment, idx, oc);
+    });
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderCommentItem(comment, idx, oc) {
+  const isOwner = currentUser && comment.email === currentUser.email;
+  const isOCOwner = currentUser && oc.owner === currentUser.email;
+  const reactions = comment.reactions || {};
+  const likes = comment.likes || [];
+  const likedByUser = likes.includes(currentUser?.email);
+  const commentText = comment.text || '';
+  const avatarLetter = (comment.name || 'U').slice(0, 1);
+  
+  let displayText = commentText;
+  let stickerHtml = '';
+  const stickerMatch = commentText.match(/!\[sticker\]\(([^)]+)\)/);
+  if (stickerMatch) {
+    stickerHtml = `<img src="${stickerMatch[1]}" class="sticker-inline" alt="sticker">`;
+    displayText = commentText.replace(/!\[sticker\]\([^)]+\)/, '').trim();
+  }
+
+  const gifMatch = commentText.match(/!\[gif\]\(([^)]+)\)/);
+  if (gifMatch) {
+    stickerHtml = `<img src="${gifMatch[1]}" class="sticker-inline" alt="gif" style="max-width:120px;max-height:120px;">`;
+    displayText = commentText.replace(/!\[gif\]\([^)]+\)/, '').trim();
+  }
+
+  let html = `
+    <div class="comment-item" data-comment-idx="${idx}">
+      <div class="comment-avatar-lg" style="${comment.avatar ? `background-image:url(${comment.avatar});background-size:cover;` : ''}">
+        ${comment.avatar ? '' : esc(avatarLetter)}
+      </div>
+      <div class="comment-content">
+        <div class="comment-author">
+          <span class="name">${esc(comment.name)}</span>
+          ${isOCOwner && comment.email === oc.owner ? `<span class="badge-owner">Creator</span>` : ''}
+          ${isOwner ? `<span class="badge-owner" style="background:var(--accent2);">You</span>` : ''}
+          <span class="time">${timeAgo(comment.date)}</span>
+        </div>
+        <div class="comment-text">
+          ${displayText ? nl2br(displayText) : ''}
+          ${stickerHtml}
+        </div>
+        <div class="comment-actions-row">
+          <button class="like-btn ${likedByUser ? 'active' : ''}" data-comment-like="${idx}">
+            ${likedByUser ? '❤️' : '🤍'} ${likes.length > 0 ? likes.length : ''}
+          </button>
+          <button class="reply-btn" data-comment-reply="${idx}">Reply</button>
+          ${isOwner ? `<button class="delete-btn" data-comment-delete="${idx}" style="color:var(--danger);">Delete</button>` : ''}
+        </div>
+        
+        <div class="comment-reactions">
+          ${EMOJI_REACTIONS.slice(0, 8).map(emoji => {
+            const users = reactions[emoji] || [];
+            const count = users.length;
+            const hasReacted = users.includes(currentUser?.email);
+            return `
+              <span class="comment-reaction ${hasReacted ? 'active' : ''}" data-comment-reaction="${idx}" data-reaction-emoji="${emoji}">
+                ${emoji}
+                ${count > 0 ? `<span class="reaction-count">${count}</span>` : ''}
+              </span>
+            `;
+          }).join('')}
+          ${Object.keys(reactions).length > 8 ? `<span style="font-size:12px;color:var(--text-muted);">+${Object.keys(reactions).length - 8}</span>` : ''}
+        </div>
+        
+        <div class="comment-reply-form" id="reply-form-${idx}" style="display:none;">
+          <input type="text" placeholder="Write a reply..." class="reply-input" data-reply-to="${idx}">
+          <button class="send-reply-btn" data-reply-to="${idx}">Reply</button>
+          <button class="cancel-reply-btn" data-reply-to="${idx}" style="background:transparent;color:var(--text-secondary);">Cancel</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
+// ====== HANDLERS ======
+function attachHandlers() {
+  if (screen === 'auth') {
+    document.querySelectorAll('[data-auth-tab]').forEach(b => {
+      b.onclick = () => {
+        authMode = b.dataset.authTab;
+        authError = '';
+        authSuccess = '';
+        render();
+      };
+    });
+
+    const loginActionBtn = document.getElementById('login-action-btn');
+    if (loginActionBtn) {
+      loginActionBtn.onclick = () => {
+        const form = document.getElementById('login-form');
+        if (form) form.dispatchEvent(new Event('submit'));
+      };
+    }
+
+    const signupActionBtn = document.getElementById('signup-action-btn');
+    if (signupActionBtn) {
+      signupActionBtn.onclick = () => {
+        const form = document.getElementById('signup-form');
+        if (form) form.dispatchEvent(new Event('submit'));
+      };
+    }
+
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) loginForm.onsubmit = handleLogin;
+
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) signupForm.onsubmit = handleSignupRequest;
+    return;
+  }
+
+  document.querySelectorAll('[data-tab]').forEach(b => {
+    b.onclick = async (e) => {
+      e.stopPropagation();
+      const newTab = b.dataset.tab;
+      if (newTab === 'myocs') await loadMyOCs();
+      if (newTab === 'stickers') stickerLibCache = await loadStickerLib();
+      tab = newTab;
+      editingOC = null;
+      ocFormError = '';
+      render();
+    };
+  });
+
+  const brandToggle = document.getElementById('brand-toggle');
+  if (brandToggle) {
+    brandToggle.onclick = () => {
+      tab = 'feed';
+      render();
+    };
+  }
+
+  const notifBell = document.getElementById('notif-bell');
+  if (notifBell) {
+    const newBell = notifBell.cloneNode(true);
+    notifBell.parentNode.replaceChild(newBell, notifBell);
+    newBell.onclick = (e) => {
+      e.stopPropagation();
+      notificationPanelOpen = !notificationPanelOpen;
+      if (notificationPanelOpen) {
+        notifications.forEach(n => n.read = true);
+        if (currentUser) {
+          const key = 'notifications:' + currentUser.email;
+          sSet(key, notifications);
+        }
+      }
+      render();
+    };
+  }
+
+  const closePanel = document.getElementById('close-notif-panel');
+  if (closePanel) {
+    closePanel.onclick = (e) => {
+      e.stopPropagation();
+      notificationPanelOpen = false;
+      render();
+    };
+  }
+
+  document.querySelectorAll('.dismiss-notif').forEach(btn => {
+    btn.onclick = async (e) => {
+      e.stopPropagation();
+      const id = btn.dataset.notifId;
+      if (id && currentUser) {
+        await deleteNotification(currentUser.email, id);
+        notifications = await loadNotificationsForUser(currentUser.email);
+        render();
+      }
+    };
+  });
+
+  const clearNotifs = document.getElementById('clear-notifs');
+  if (clearNotifs) {
+    clearNotifs.onclick = async (e) => {
+      e.stopPropagation();
+      if (currentUser) {
+        await clearAllNotifications(currentUser.email);
+        notifications = [];
+        render();
+      }
+    };
+  }
+
+  document.addEventListener('click', (e) => {
+    const panel = document.getElementById('notif-panel');
+    const bell = document.getElementById('notif-bell');
+    if (notificationPanelOpen && panel && bell) {
+      if (!panel.contains(e.target) && !bell.contains(e.target)) {
+        notificationPanelOpen = false;
+        render();
+      }
+    }
+  });
+
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.onclick = () => {
+      currentUser = null;
+      screen = 'auth';
+      authMode = 'login';
+      authError = '';
+      authSuccess = 'You have been logged out.';
+      localStorage.removeItem('lastUser');
+      render();
+    };
+  }
+
+  const fab = document.getElementById('fab-btn');
+  if (fab) {
+    fab.onclick = () => {
+      editingOC = null;
+      formStickerLayers = [];
+      formImages = [];
+      formBgTheme = 'none';
+      selectedStickerId = null;
+      selectedPronoun = '';
+      selectedGender = '';
+      ocFormError = '';
+      tab = 'oc-form';
+      render();
+    };
+  }
+
+  const newOcBtn = document.getElementById('new-oc-btn');
+  if (newOcBtn) {
+    newOcBtn.onclick = () => {
+      editingOC = null;
+      formStickerLayers = [];
+      formImages = [];
+      formBgTheme = 'none';
+      selectedStickerId = null;
+      selectedPronoun = '';
+      selectedGender = '';
+      ocFormError = '';
+      tab = 'oc-form';
+      render();
+    };
+  }
+
+  wireFeedControls();
+
+  document.querySelectorAll('[data-open-oc]').forEach(el => {
+    el.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const ocId = this.dataset.openOc;
+      const oc = feedCache.find(o => o.id === ocId);
+      if (oc) { 
+        openOC = oc; 
+        renderModalOnly(); 
+      }
+      return false;
+    };
+  });
+
+  document.querySelectorAll('[data-edit-oc]').forEach(el => {
+    el.onclick = (e) => {
+      e.stopPropagation();
+      const oc = feedCache.find(o => o.id === el.dataset.editOc);
+      if (!oc) return;
+      editingOC = oc;
+      formStickerLayers = oc.stickerLayers ? oc.stickerLayers.map(l => ({ ...l })) : [];
+      formImages = oc.images ? [...oc.images] : [];
+      formBgTheme = oc.bgTheme || 'none';
+      selectedStickerId = null;
+      selectedPronoun = oc.pronouns || '';
+      selectedGender = oc.gender || '';
+      ocFormError = '';
+      tab = 'oc-form';
+      render();
+    };
+  });
+
+  const ocForm = document.getElementById('oc-form');
+  if (ocForm) {
+    setupChipHandlers();
+
+    document.querySelectorAll('#bg-swatches .bg-swatch').forEach(sw => {
+      sw.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const bgId = this.dataset.bg;
+        formBgTheme = bgId;
+        document.querySelectorAll('#bg-swatches .bg-swatch').forEach(s => s.classList.remove('selected'));
+        this.classList.add('selected');
+        console.log('Theme selected:', bgId);
+      };
+    });
+
+    document.querySelectorAll('[data-sticker-add]').forEach(slot => {
+      slot.onclick = (e) => {
+        e.stopPropagation();
+        if (formStickerLayers.length >= 10) {
+          ocFormError = 'Maximum 10 stickers allowed.';
+          render();
+          return;
+        }
+        const val = slot.dataset.stickerAdd;
+        if (formStickerLayers.some(l => l.src === val)) {
+          ocFormError = 'This sticker is already added!';
+          render();
+          return;
+        }
+        formStickerLayers.push({ 
+          id: uid(), 
+          src: val, 
+          x: 30 + Math.random() * 40, 
+          y: 20 + Math.random() * 40 
+        });
+        selectedStickerId = formStickerLayers[formStickerLayers.length - 1].id;
+        ocFormError = '';
+        render();
+      };
+    });
+
+    const imgInput = document.getElementById('oc-image-input');
+    if (imgInput) {
+      imgInput.onchange = async () => {
+        try {
+          const files = imgInput.files;
+          for (const file of files) {
+            const dataUrl = await fileToResizedDataURL(file, 700);
+            if (dataUrl) formImages.push(dataUrl);
+          }
+          imgInput.value = '';
+          render();
+        } catch (e) {
+          ocFormError = e.message;
+          render();
+        }
+      };
+    }
+
+    document.querySelectorAll('[data-remove-image]').forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const i = parseInt(btn.dataset.removeImage, 10);
+        if (!isNaN(i) && i >= 0 && i < formImages.length) {
+          formImages.splice(i, 1);
+          render();
+        }
+      };
+    });
+
+    ocForm.onsubmit = handleOCFormSubmit;
+
+    const cancelBtn = document.getElementById('cancel-oc-form');
+    if (cancelBtn) {
+      cancelBtn.onclick = (e) => {
+        e.stopPropagation();
+        tab = 'myocs';
+        editingOC = null;
+        formStickerLayers = [];
+        formImages = [];
+        formBgTheme = 'none';
+        selectedPronoun = '';
+        selectedGender = '';
+        render();
+      };
+    }
+  }
+
+  const stickerUpload = document.getElementById('sticker-upload');
+  if (stickerUpload) {
+    stickerUpload.onchange = async () => {
+      try {
+        const dataUrl = await fileToResizedDataURL(stickerUpload.files[0], 220);
+        if (dataUrl) {
+          stickerLibCache.push(dataUrl);
+          await sSet('stickers:' + currentUser.email, stickerLibCache);
+          render();
+        }
+      } catch (e) { alert(e.message); }
+    };
+  }
+
+  document.querySelectorAll('[data-del-sticker]').forEach(btn => {
+    btn.onclick = async (e) => {
+      e.stopPropagation();
+      const i = parseInt(btn.dataset.delSticker, 10);
+      if (!isNaN(i) && i >= 0 && i < stickerLibCache.length) {
+        stickerLibCache.splice(i, 1);
+        await sSet('stickers:' + currentUser.email, stickerLibCache);
+        render();
+      }
+    };
+  });
+
+  const profileForm = document.getElementById('profile-form');
+  if (profileForm) {
+    setupChipHandlers();
+    profileForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const fd = new FormData(profileForm);
+      currentUser.displayName = fd.get('displayName').trim();
+      currentUser.pronouns = fd.get('pronouns').trim();
+      currentUser.gender = fd.get('gender').trim();
+      currentUser.bio = fd.get('bio').trim();
+      await sSet('user:' + currentUser.email, currentUser);
+      for (const oc of feedCache.filter(o => o.owner === currentUser.email)) {
+        oc.ownerName = currentUser.displayName;
+        await sSet('oc:' + oc.id, oc);
+      }
+      await loadFeed();
+      const savedMsg = document.getElementById('profile-saved');
+      if (savedMsg) savedMsg.style.display = 'inline';
+      setTimeout(render, 700);
+    };
+  }
+
+  document.querySelectorAll('[data-theme]').forEach(sw => {
+    sw.onclick = async (e) => {
+      e.stopPropagation();
+      const key = sw.dataset.theme;
+      currentUser.themePref = key;
+      applyTheme(key);
+      await sSet('user:' + currentUser.email, currentUser);
+      render();
+    };
+  });
+
+  document.querySelectorAll('[data-font]').forEach(fontOption => {
+    fontOption.onclick = async (e) => {
+      e.stopPropagation();
+      const fontId = fontOption.dataset.font;
+      document.querySelectorAll('[data-font]').forEach(f => f.classList.remove('active'));
+      fontOption.classList.add('active');
+      applyFont(fontId);
+      if (currentUser) {
+        currentUser.fontPref = fontId;
+        await sSet('user:' + currentUser.email, currentUser);
+      }
+      render();
+    };
+  });
+
+  renderModalOnly();
+}
+
+// ====== FEED CONTROLS ======
+function wireFeedControls() {
+  const searchInput = document.getElementById('feed-search');
+  if (searchInput) {
+    searchInput.oninput = () => {
+      feedSearchQuery = searchInput.value;
+      if (tab === 'feed') {
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.innerHTML = renderNotificationsPanel() + renderFeedTab();
+          reattachFeedOpen();
+          wireFeedControls();
+          attachHandlers();
+        }
+      }
+    };
+  }
+
+  const sortSelect = document.getElementById('feed-sort');
+  if (sortSelect) {
+    sortSelect.onchange = () => {
+      feedSortMode = sortSelect.value;
+      if (tab === 'feed') {
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.innerHTML = renderNotificationsPanel() + renderFeedTab();
+          reattachFeedOpen();
+          wireFeedControls();
+          attachHandlers();
+        }
+      }
+    };
+  }
+
+  const filterSelect = document.getElementById('feed-filter');
+  if (filterSelect) {
+    filterSelect.onchange = () => {
+      feedFilterMode = filterSelect.value;
+      if (tab === 'feed') {
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.innerHTML = renderNotificationsPanel() + renderFeedTab();
+          reattachFeedOpen();
+          wireFeedControls();
+          attachHandlers();
+        }
+      }
+    };
+  }
+}
+
+function reattachFeedOpen() {
+  document.querySelectorAll('[data-open-oc]').forEach(el => {
+    el.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const ocId = this.dataset.openOc;
+      const oc = feedCache.find(o => o.id === ocId);
+      if (oc) { 
+        openOC = oc; 
+        renderModalOnly(); 
+      }
+      return false;
+    };
+  });
+}
+
+// ====== CHIP HANDLERS ======
+function setupChipHandlers() {
+  const ocPronounChips = document.querySelectorAll('#oc-pronoun-chips .chip');
+  ocPronounChips.forEach(chip => {
+    chip.onclick = (e) => {
+      e.stopPropagation();
+      ocPronounChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('oc-pronouns').value = chip.dataset.value;
+    };
+  });
+
+  const ocGenderChips = document.querySelectorAll('#oc-gender-chips .chip');
+  ocGenderChips.forEach(chip => {
+    chip.onclick = (e) => {
+      e.stopPropagation();
+      ocGenderChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('oc-gender').value = chip.dataset.value;
+    };
+  });
+
+  const profilePronounChips = document.querySelectorAll('#profile-pronoun-chips .chip');
+  profilePronounChips.forEach(chip => {
+    chip.onclick = (e) => {
+      e.stopPropagation();
+      profilePronounChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('profile-pronouns').value = chip.dataset.value;
+    };
+  });
+
+  const profileGenderChips = document.querySelectorAll('#profile-gender-chips .chip');
+  profileGenderChips.forEach(chip => {
+    chip.onclick = (e) => {
+      e.stopPropagation();
+      profileGenderChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      document.getElementById('profile-gender').value = chip.dataset.value;
+    };
+  });
+}
+
+// ====== MODAL RENDER ======
+function renderModalOnly() {
+  const existing = document.getElementById('modal-backdrop');
+  if (existing) {
+    existing.remove();
+  }
+  if (!openOC) return;
+
+  const oc = openOC;
+  const isOwner = currentUser && oc.owner === currentUser.email;
+  const liked = currentUser && (oc.likes || []).includes(currentUser.email);
+  const relationships = getOCRelationships(oc);
+  
+  let allImages = [];
+  if (oc.images && oc.images.length > 0) {
+    allImages = [...oc.images];
+  } else if (oc.image) {
+    allImages = [oc.image];
+  }
+  
+  if (allImages.length === 0 && oc.image) {
+    allImages = [oc.image];
+  }
+
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = `
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal">
+      <button class="modal-close" id="close-modal">✕</button>
+      <div class="modal-body" style="margin-top:0;padding-top:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+          <h2 style="margin:0;font-size:24px;">${esc(oc.name)} ${oc.contentWarning ? '⚠️' : ''}</h2>
+          ${isOwner ? `
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <button class="btn small" id="edit-oc-btn">Edit</button>
+              <button class="btn small danger" id="delete-oc-btn">Delete</button>
+            </div>` : ''}
+        </div>
+        <div style="font-size:13px;color:var(--text-secondary);font-weight:600;">Created by ${esc(oc.ownerName)}</div>
+        <div style="margin-top:6px;">
+          ${oc.pronouns ? `<span style="display:inline-block;background:var(--tag-bg);color:var(--accent4);font-weight:700;font-size:12px;padding:4px 11px;border-radius:999px;margin:4px 6px 0 0;">${esc(oc.pronouns)}</span>` : ''}
+          ${oc.gender ? `<span style="display:inline-block;background:var(--tag-bg);color:var(--accent4);font-weight:700;font-size:12px;padding:4px 11px;border-radius:999px;margin:4px 6px 0 0;">${esc(oc.gender)}</span>` : ''}
+          ${oc.tags ? oc.tags.map(t => `<span style="display:inline-block;background:var(--tag-bg);color:var(--accent4);font-weight:700;font-size:12px;padding:4px 11px;border-radius:999px;margin:4px 6px 0 0;">#${esc(t)}</span>`).join('') : ''}
+        </div>
+        ${relationships.length ? `
+          <div style="margin:6px 0;">
+            ${relationships.map(r => `
+              <span style="background:var(--accent4);color:white;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;display:inline-block;margin:2px;">${esc(r.type)}: ${esc(r.target.name)}</span>
+            `).join('')}
+          </div>` : ''}
+        <div><span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-secondary);display:inline-block;background:var(--tag-bg);padding:3px 10px;border-radius:6px;margin-top:6px;">📌 posted ${formatDate(oc.createdAt)}</span></div>
+        
+        ${allImages.length > 0 ? `
+          <div style="margin-top:12px;border-radius:12px;overflow:hidden;background:var(--bg-secondary);border:2px solid var(--border-color);">
+            ${allImages.length === 1 ? `
+              <div style="width:100%;max-height:400px;display:flex;align-items:center;justify-content:center;background:var(--bg-secondary);">
+                ${isVideo(allImages[0]) ? 
+                  `<video src="${allImages[0]}" controls style="max-width:100%;max-height:400px;object-fit:contain;"></video>` : 
+                  `<img src="${allImages[0]}" style="max-width:100%;max-height:400px;object-fit:contain;display:block;">`}
+              </div>
+            ` : `
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding:12px;">
+                ${allImages.map(src => `
+                  <div style="border-radius:8px;overflow:hidden;aspect-ratio:1;background:var(--bg-secondary);border:2px solid var(--border-color);">
+                    ${isVideo(src) ? 
+                      `<video src="${src}" muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>` : 
+                      `<img src="${src}" style="width:100%;height:100%;object-fit:cover;">`}
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+        ` : `
+          <div style="margin-top:12px;padding:40px;text-align:center;background:var(--bg-secondary);border-radius:12px;border:2px dashed var(--border-color);">
+            <span style="font-size:48px;">🎨</span>
+            <p style="color:var(--text-secondary);font-weight:600;margin-top:8px;">No image uploaded</p>
+          </div>
+        `}
+        
+        <div style="background:var(--bg-secondary);border-radius:14px;padding:16px 18px;margin-top:14px;font-size:14px;line-height:1.6;white-space:pre-wrap;">${nl2br(oc.desc)}</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;">
+          <button class="btn like-btn ${liked ? 'liked' : ''}" id="like-btn" style="border:none;background:${liked ? 'var(--danger)' : 'var(--bg-secondary)'};color:${liked ? 'white' : 'var(--danger)'};font-weight:800;padding:9px 18px;border-radius:999px;font-size:14px;box-shadow:0 3px 0 var(--shadow);cursor:pointer;">❤️ ${liked ? 'Liked' : 'Like'} (${(oc.likes || []).length})</button>
+          ${oc.contentWarning ? `<span style="color:var(--danger);font-weight:700;">⚠️ This post has a content warning</span>` : ''}
+        </div>
+        
+        ${renderBeautifulComments(oc)}
+        
+      </div>
+    </div>
+  </div>`;
+
+  document.body.appendChild(wrapper.firstElementChild);
+
+  const closeBtn = document.getElementById('close-modal');
+  if (closeBtn) {
+    closeBtn.onclick = function(e) {
+      e.preventDefault();
+      openOC = null;
+      renderModalOnly();
+      return false;
+    };
+  }
+  
+  const backdrop = document.getElementById('modal-backdrop');
+  if (backdrop) {
+    backdrop.onclick = function(e) {
+      if (e.target === this) {
+        openOC = null;
+        renderModalOnly();
+      }
+    };
+  }
+
+  const textarea = document.getElementById('comment-textarea');
+  if (textarea) {
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, 100) + 'px';
+    });
+    
+    textarea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitComment();
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-emoji]').forEach(btn => {
+    btn.onclick = () => {
+      const emoji = btn.dataset.emoji;
+      if (textarea) {
+        const cursor = textarea.selectionStart;
+        const text = textarea.value;
+        textarea.value = text.slice(0, cursor) + emoji + text.slice(cursor);
+        textarea.focus();
+        textarea.dispatchEvent(new Event('input'));
+      }
+    };
+  });
+
+  document.querySelectorAll('[data-sticker]').forEach(btn => {
+    btn.onclick = () => {
+      const stickerUrl = btn.dataset.sticker;
+      if (textarea) {
+        const cursor = textarea.selectionStart;
+        const text = textarea.value;
+        const stickerMarkdown = ` ![sticker](${stickerUrl}) `;
+        textarea.value = text.slice(0, cursor) + stickerMarkdown + text.slice(cursor);
+        textarea.focus();
+        textarea.dispatchEvent(new Event('input'));
+      }
+    };
+  });
+
+  const sendBtn = document.getElementById('send-comment-btn');
+  if (sendBtn) {
+    sendBtn.onclick = submitComment;
+  }
+
+  document.querySelectorAll('[data-comment-reaction]').forEach(el => {
+    el.onclick = async (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.commentReaction);
+      const emoji = el.dataset.reactionEmoji;
+      if (isNaN(idx) || !emoji || !openOC) return;
+      
+      const comment = openOC.comments[idx];
+      if (!comment) return;
+      
+      toggleCommentReaction(comment, emoji);
+      await sSet('oc:' + openOC.id, openOC);
+      await loadFeed();
+      openOC = feedCache.find(o => o.id === openOC.id);
+      renderModalOnly();
+    };
+  });
+
+  document.querySelectorAll('[data-comment-like]').forEach(el => {
+    el.onclick = async (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.commentLike);
+      if (isNaN(idx) || !openOC) return;
+      
+      const comment = openOC.comments[idx];
+      if (!comment) return;
+      
+      toggleCommentLike(comment);
+      await sSet('oc:' + openOC.id, openOC);
+      await loadFeed();
+      openOC = feedCache.find(o => o.id === openOC.id);
+      renderModalOnly();
+    };
+  });
+
+  document.querySelectorAll('[data-comment-reply]').forEach(el => {
+    el.onclick = (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.commentReply);
+      const replyForm = document.getElementById(`reply-form-${idx}`);
+      if (replyForm) {
+        replyForm.style.display = replyForm.style.display === 'none' ? 'flex' : 'none';
+        const input = replyForm.querySelector('.reply-input');
+        if (input) setTimeout(() => input.focus(), 100);
+      }
+    };
+  });
+
+  document.querySelectorAll('.send-reply-btn').forEach(btn => {
+    btn.onclick = async (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.replyTo);
+      const replyForm = document.getElementById(`reply-form-${idx}`);
+      const input = replyForm?.querySelector('.reply-input');
+      if (!input || !input.value.trim()) return;
+      
+      const replyText = input.value.trim();
+      const parentComment = openOC.comments[idx];
+      if (!parentComment) return;
+      
+      if (!openOC.comments) openOC.comments = [];
+      openOC.comments.push({
+        email: currentUser.email,
+        name: currentUser.displayName,
+        text: `↳ @${parentComment.name}: ${replyText}`,
+        date: new Date().toISOString(),
+        reactions: {},
+        likes: [],
+        parentId: idx
+      });
+      
+      await sSet('oc:' + openOC.id, openOC);
+      await loadFeed();
+      openOC = feedCache.find(o => o.id === openOC.id);
+      renderModalOnly();
+    };
+  });
+
+  document.querySelectorAll('.cancel-reply-btn').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.replyTo);
+      const replyForm = document.getElementById(`reply-form-${idx}`);
+      if (replyForm) replyForm.style.display = 'none';
+    };
+  });
+
+  document.querySelectorAll('[data-comment-delete]').forEach(el => {
+    el.onclick = async (e) => {
+      e.stopPropagation();
+      const idx = parseInt(el.dataset.commentDelete);
+      if (isNaN(idx) || !openOC) return;
+      
+      if (!confirm('Delete this comment?')) return;
+      
+      openOC.comments.splice(idx, 1);
+      await sSet('oc:' + openOC.id, openOC);
+      await loadFeed();
+      openOC = feedCache.find(o => o.id === openOC.id);
+      renderModalOnly();
+    };
+  });
+
+  if (isOwner) {
+    const editBtn = document.getElementById('edit-oc-btn');
+    if (editBtn) {
+      editBtn.onclick = (e) => {
+        e.stopPropagation();
+        editingOC = openOC;
+        formStickerLayers = openOC.stickerLayers ? openOC.stickerLayers.map(l => ({ ...l })) : [];
+        formImages = openOC.images ? [...openOC.images] : [];
+        formBgTheme = openOC.bgTheme || 'none';
+        selectedStickerId = null;
+        selectedPronoun = openOC.pronouns || '';
+        selectedGender = openOC.gender || '';
+        openOC = null;
+        tab = 'oc-form';
+        ocFormError = '';
+        render();
+      };
+    }
+    const delBtn = document.getElementById('delete-oc-btn');
+    if (delBtn) {
+      delBtn.onclick = async (e) => {
+        e.stopPropagation();
+        if (!confirm('Delete this character permanently? This can\'t be undone.')) return;
+        await sDelete('oc:' + openOC.id);
+        openOC = null;
+        await loadFeed();
+        await loadMyOCs();
+        render();
+      };
+    }
+  }
+
+  const likeBtn = document.getElementById('like-btn');
+  if (likeBtn) {
+    likeBtn.onclick = async (e) => {
+      e.stopPropagation();
+      if (!currentUser) return;
+      openOC.likes = openOC.likes || [];
+      const idx = openOC.likes.indexOf(currentUser.email);
+      if (idx >= 0) {
+        openOC.likes.splice(idx, 1);
+      } else {
+        openOC.likes.push(currentUser.email);
+        if (openOC.owner !== currentUser.email) {
+          await addNotificationForUser(openOC.owner, `❤️ ${currentUser.displayName} liked your character "${openOC.name}"`);
+        }
+      }
+      await sSet('oc:' + openOC.id, openOC);
+      await loadFeed();
+      openOC = feedCache.find(o => o.id === openOC.id);
+      notifications = await loadNotificationsForUser(currentUser.email);
+      renderModalOnly();
+      renderFeedIfVisible();
+    };
+  }
+
+  function submitComment() {
+    const textarea = document.getElementById('comment-textarea');
+    if (!textarea || !textarea.value.trim()) return;
+    
+    const text = textarea.value.trim();
+    openOC.comments = openOC.comments || [];
+    openOC.comments.push({
+      email: currentUser.email,
+      name: currentUser.displayName,
+      avatar: currentUser.avatar || '',
+      text: text,
+      date: new Date().toISOString(),
+      reactions: {},
+      likes: []
+    });
+    
+    if (openOC.owner !== currentUser.email) {
+      addNotificationForUser(openOC.owner, `💬 ${currentUser.displayName} commented on "${openOC.name}": "${text.slice(0, 50)}${text.length > 50 ? '...' : ''}"`);
+    }
+    
+    sSet('oc:' + openOC.id, openOC);
+    loadFeed();
+    openOC = feedCache.find(o => o.id === openOC.id);
+    renderModalOnly();
+  }
+}
+
+function renderFeedIfVisible() {
+  if (tab === 'feed') {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.innerHTML = renderNotificationsPanel() + renderFeedTab();
+      reattachFeedOpen();
+      wireFeedControls();
+    }
+  }
+}
+
+// ====== AUTH HANDLERS ======
+async function handleLogin(e) {
+  e.preventDefault();
+  authError = '';
+  authSuccess = '';
+  const fd = new FormData(e.target);
+  const email = fd.get('email').trim().toLowerCase();
+  const password = fd.get('password');
+
+  const user = await sGet('user:' + email);
+  if (!user) {
+    authError = 'No account found with that username. Please sign up first.';
+    render();
+    return;
+  }
+
+  if (user.passwordHash !== simpleObscure(password)) {
+    authError = 'Incorrect password. Please try again.';
+    render();
+    return;
+  }
+
+  currentUser = user;
+  applyTheme(user.themePref || 'bubblegum');
+  if (user.fontPref) applyFont(user.fontPref);
+  screen = 'app';
+  tab = 'feed';
+  authSuccess = '';
+  authError = '';
+
+  await loadFeed();
+  await loadMyOCs();
+  notifications = await loadNotificationsForUser(currentUser.email);
+  localStorage.setItem('lastUser', currentUser.email);
+  render();
+}
+
+async function handleSignupRequest(e) {
+  e.preventDefault();
+  authError = '';
+  authSuccess = '';
+  const fd = new FormData(e.target);
+  const displayName = fd.get('displayName').trim();
+  const email = fd.get('email').trim().toLowerCase();
+  const password = fd.get('password');
+
+  if (!displayName || !email || !password) {
+    authError = 'Please fill in all fields.';
+    render();
+    return;
+  }
+
+  if (password.length < 6) {
+    authError = 'Password must be at least 6 characters.';
+    render();
+    return;
+  }
+
+  const existing = await sGet('user:' + email);
+  if (existing) {
+    authError = 'An account with that username already exists. Please log in instead.';
+    render();
+    return;
+  }
+
+  const newUser = {
+    email,
+    passwordHash: simpleObscure(password),
+    displayName,
+    pronouns: '',
+    gender: '',
+    bio: '',
+    avatar: '',
+    themePref: 'bubblegum',
+    fontPref: 'quicksand',
+    joinDate: new Date().toISOString()
+  };
+
+  await sSet('user:' + newUser.email, newUser);
+
+  currentUser = newUser;
+  applyTheme('bubblegum');
+  screen = 'app';
+  tab = 'feed';
+  authMode = 'login';
+  authError = '';
+  authSuccess = '';
+
+  await loadFeed();
+  await loadMyOCs();
+  notifications = await loadNotificationsForUser(currentUser.email);
+  localStorage.setItem('lastUser', currentUser.email);
+  render();
+}
+
+// ====== OC FORM SUBMIT ======
+async function handleOCFormSubmit(e) {
+  e.preventDefault();
+  ocFormError = '';
+  const fd = new FormData(e.target);
+  const name = fd.get('name').trim();
+  const desc = fd.get('desc').trim();
+  const pronouns = fd.get('pronouns').trim();
+  const gender = fd.get('gender').trim();
+  const tagsStr = fd.get('tags').trim();
+  const contentWarning = fd.has('contentWarning') && fd.get('contentWarning') === 'on';
+
+  if (!name || !desc) {
+    ocFormError = 'Please fill in a name and description.';
+    render();
+    return;
+  }
+
+  const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(t => t) : [];
+
+  if (editingOC) {
+    editingOC.name = name;
+    editingOC.desc = desc;
+    editingOC.pronouns = pronouns;
+    editingOC.gender = gender;
+    editingOC.tags = tags;
+    editingOC.contentWarning = contentWarning;
+    if (formImages.length > 0) {
+      editingOC.images = formImages;
+      editingOC.image = formImages[0];
+    }
+    editingOC.stickerLayers = formStickerLayers.map(l => ({ ...l }));
+    editingOC.stickers = formStickerLayers.map(l => l.src);
+    editingOC.bgTheme = formBgTheme;
+    await sSet('oc:' + editingOC.id, editingOC);
+  } else {
+    const oc = {
+      id: uid(),
+      owner: currentUser.email,
+      ownerName: currentUser.displayName,
+      name,
+      desc,
+      pronouns,
+      gender,
+      image: formImages.length > 0 ? formImages[0] : null,
+      images: formImages,
+      bgTheme: formBgTheme,
+      stickerLayers: formStickerLayers.map(l => ({ ...l })),
+      stickers: formStickerLayers.map(l => l.src),
+      tags,
+      contentWarning: contentWarning,
+      createdAt: new Date().toISOString(),
+      likes: [],
+      comments: [],
+      relationships: []
+    };
+    await sSet('oc:' + oc.id, oc);
+    addNotificationForUser(currentUser.email, `🎨 You created a new character: "${oc.name}"`);
+  }
+
+  editingOC = null;
+  formStickerLayers = [];
+  formImages = [];
+  formBgTheme = 'none';
+  selectedStickerId = null;
+  selectedPronoun = '';
+  selectedGender = '';
+
+  await loadFeed();
+  await loadMyOCs();
+  tab = 'myocs';
+  render();
+}
+
+// ====== INIT ======
+(async function init() {
+  applyTheme('bubblegum');
+
+  const savedUserEmail = localStorage.getItem('lastUser');
+  if (savedUserEmail) {
+    const savedUser = await sGet('user:' + savedUserEmail);
+    if (savedUser) {
+      currentUser = savedUser;
+      screen = 'app';
+      tab = 'feed';
+      await loadFeed();
+      await loadMyOCs();
+      notifications = await loadNotificationsForUser(currentUser.email);
+      applyTheme(currentUser.themePref || 'bubblegum');
+      if (currentUser.fontPref) applyFont(currentUser.fontPref);
+    }
+  }
+
+  render();
+
+  setTimeout(detectKeyboard, 500);
+
+  console.log('🎨 ProjectRabs with Beautiful Comments loaded!');
+  console.log('🐛 FIXED: All posts now show in feed!');
+  console.log('🐛 FIXED: Background themes are clickable!');
+  console.log('🐛 FIXED: NSFW checkbox is visible!');
+  console.log('🔗 FIXED: GitHub and Gmail links work!');
+  console.log('📱 FIXED: Auth screen scrolls on mobile!');
+})();
+</script>
+</body>
+</html>
